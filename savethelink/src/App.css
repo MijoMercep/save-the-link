@@ -40,3 +40,18 @@
 .read-the-docs {
   color: #888;
 }
+.text-input{
+  
+  height: 30vw;
+  width: 50vw;
+}
+.input-div{
+  position: absolute;
+  margin-left: -10%;
+  margin-top: -20%;
+}
+.button-div{
+  position: absolute;
+  margin-top: -10%;
+  margin-left: -20%;
+}

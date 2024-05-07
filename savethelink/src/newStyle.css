@@ -1,4 +1,7 @@
 .rdp {
+  position: absolute;
+  left:10%;
+  top:10%;
   --rdp-cell-size: 40px; /* Size of the day cells. */
   --rdp-caption-font-size: 18px; /* Font size for the caption labels. */
   --rdp-accent-color: grey; /* Accent color for the background of selected days. */
