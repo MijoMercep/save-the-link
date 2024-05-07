@@ -22,6 +22,11 @@ function App() {
   `);
   const [rerender, setRerender] = useState(false);
   const [valueInput, setValueInput] = useState("");
+  const [dateOutput, setDateOutput] = useState(new Map());
+  const mapArray = [];
+
+
+
   useEffect(() => {
     setCss(`
       .my-today { 
@@ -35,24 +40,39 @@ function App() {
 
   const changeColor = () => {
     
-    if(selected.toDateString() == todayDate && valueInput != ""){
+    
+      const newMap = new Map(dateOutput);
+      newMap.set(selected?.toDateString(), valueInput);
+      setDateOutput(newMap);
+      mapArray.push(newMap);
+      console.log(dateOutput);
+      console.log(mapArray);  
       const updatedDates = [...dates, selected];
       setDates(updatedDates);
       setRerender(prev => !prev); 
-    }
+      
+   
     
     
   };
 const valueOutput = () => {
   console.log(valueInput);
+  console.log(dateOutput);
+  console.log(selected);
+  console.log(dates);
+  console.log(selected?.toDateString());
+  console.log(dateOutput.get(selected?.toDateString()));
+  
 }
+
   return (
     <>
       <div>
         <style>{css}</style>
+        
         <DayPicker
           mode="single"
-          selected={dates}
+          selected={dates[-1]}
           onSelect={setSelected}
           modifiersClassNames={{
             
@@ -64,7 +84,8 @@ const valueOutput = () => {
       </div>
       <div className='input-div'>
         <textarea className='text-input' placeholder='Type your achievement...' value={valueInput} onChange={e => setValueInput(e.target.value)}></textarea>
-
+          <p>{format(selected, 'PPP')}</p>
+          <p>{dateOutput.get(selected?.toDateString())}</p>
       </div>
     </>
   );
