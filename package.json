@@ -1,6 +1,9 @@
 {
   "dependencies": {
     "date-streaks": "^1.2.1",
-    "vite": "^5.2.11"
+    "firebase": "^10.11.1",
+    "react-router-dom": "^6.23.0",
+    "vite": "^5.2.11",
+    "vite-plugin-env-compatible": "^2.0.1"
   }
 }

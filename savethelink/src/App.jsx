@@ -5,108 +5,74 @@ import { format } from "date-fns";
 import { Button, DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import "./newStyle.css";
+import SignUp from "./RegisterPage";
+import LoginPage from "./LoginPage";
+import MainPage from "./MainPage";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword} from "firebase/auth"
+import {auth} from "./firebase-config";
+import {BrowserRouter as Router, Route, Routes, useNavigate} from "react-router-dom";
 
-const today = new Date();
-const todayDate = today.toDateString();
-const initialDates = [];
 
 function App() {
-  const [selected, setSelected] = useState(new Date());
-  const [dates, setDates] = useState(initialDates);
-  const [css, setCss] = useState(`
-    .my-today { 
-      background-color: white;
-      color: black;
-    }
-  `);
-  const [rerender, setRerender] = useState(false);
-  const [valueInput, setValueInput] = useState("");
-  const [dateOutput, setDateOutput] = useState(new Map());
-  const mapArray = [];
-
+  
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const navigate = useNavigate();
+  const[user, setUser] = useState({});
   useEffect(() => {
-    setCss(`
-      .my-today { 
-        font-weight: bold;
-        font-size: 140%; 
-        color: white;
-        background-color: green;
-      }
-    `);
-  }, [rerender]);
-
-  const changeColor = () => {
-    if(valueInput != ""){
-      try{
-        const formattedDate = selected.toDateString();
-        const newMap = new Map(dateOutput);
-        newMap.set(selected?.toDateString(), valueInput);
-        setDateOutput(newMap);
-        mapArray.push(newMap);
-        if (!dates.includes(formattedDate)) {
-          const updatedDates = [...dates, formattedDate];
-          setDates(updatedDates);
-        }
-    
-        
-        setRerender((prev) => !prev);}
-        catch(error){
-          if(error instanceof TypeError){
-            window.alert("Select a date");
-          }    }
-    }
-    
-    
-  };
-
-  const valueOutput = () => {
-    console.log(valueInput);
-    console.log(dateOutput);
-    console.log(selected);
-    console.log(today.setDate(today.getDate()+1))
-    console.log(dates);
-    console.log(selected?.toDateString());
-    console.log(dateOutput.get(selected.toDateString()));
-    console.log(dates.slice(-1));
-    console.log(summary({ dates }))
-    dates.forEach(element => {
-      console.log(element);
+    onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser);
     });
-  };
+
+}, [])
+  const register = async () => {
+    try{
+      const user =  await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
+      console.log(user);
+      navigate("main");
+    }
+    catch (error)
+    {console.log(error.message)}
+    
+  }
+  const login = async () => {
+    try{
+      const user =  await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+      console.log(user);
+      navigate("main");
+     console.log(registerEmail);
+     
+     }
+      
+      catch(error){
+       console.log(registerEmail);
+       console.log(error.message);
+      }
+  }
+  const logout = async () => {
+    await signOut(auth);
+    navigate("/");
+  }
+  
+
+  
 
   return (
     <>
-      <div>
-        <style>{css}</style>
-
-        <DayPicker
-          mode="single"
-          selected={selected}
-          onSelect={setSelected}
-          modifiers={{
-            myToday: (date) => dates.includes(date.toDateString()),
-          }}
-          modifiersClassNames={{
-            myToday: "my-today",
-          }}
-        />
-        <div className="button-div">
-          <button onClick={changeColor}>Save</button>
-        </div>
-        <button onClick={valueOutput}>Ispis</button>
-      </div>
-      <div className="input-div">
-        <textarea
-          className="text-input"
-          placeholder="Type your achievement..."
-          value={valueInput}
-          onChange={(e) => setValueInput(e.target.value)}
-        ></textarea>
-        <p>Your message on: {selected?.toDateString()}</p>
-        <p>{dateOutput.get(selected?.toDateString())}</p>
-        <p>Current Streak: {summary(dates).currentStreak}</p>
-        <p>Longest Streak: {summary(dates).longestStreak}</p>
-      </div>
+    <Routes>
+      
+    <Route path='/signup' element={<SignUp setRegisterEmail={setRegisterEmail}
+    setRegisterPassword={setRegisterPassword}
+  register={register}></SignUp>}/>
+  <Route path="/" element={<LoginPage setLoginEmail={setLoginEmail}
+        setLoginPassword={setLoginPassword}
+        
+        login={login}></LoginPage>}></Route>
+<Route path="/main" element={<MainPage logout={logout} user={user}></MainPage>}></Route>
+      
+     </Routes>
     </>
   );
 }
