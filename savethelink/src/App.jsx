@@ -11,7 +11,7 @@ import MainPage from "./MainPage";
 import { createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword} from "firebase/auth"
 import {auth} from "./firebase-config";
 import {BrowserRouter as Router, Route, Routes, useNavigate} from "react-router-dom";
-
+import { collection, getDocs } from "firebase/firestore"; 
 
 function App() {
   
@@ -55,6 +55,7 @@ function App() {
     await signOut(auth);
     navigate("/");
   }
+  
   
 
   
