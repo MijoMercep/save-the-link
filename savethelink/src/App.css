@@ -3,8 +3,12 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  
 }
-
+body{
+  background-color: #ffebcd;
+  
+}
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -41,17 +45,203 @@
   color: #888;
 }
 .text-input{
+  margin-top: -7%;
+  margin-left: 30%;
+  background: #FFD79A;
+  font-size: large;
+  padding-left: 0.5%;
+  padding-top: 0.5%;
+  color: #232b2b;
+  resize: none;
+  height: 20vw;
+  width: 40vw;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: 0 0 5px 1px #232b2b;
+  transition: outline 0.3s ease;
+}
+
+.text-input:focus{
   
-  height: 10vw;
-  width: 20vw;
+  outline: 1px solid #232b2b;
+ 
+  
 }
 .input-div{
-  position: absolute;
-  margin-left: -10%;
-  margin-top: -20%;
+  
+  margin-left: 5%;
+  margin-top: 0%;
 }
 .button-div{
+  
+  
+  z-index: 5;
+  
+}
+
+.header{
+  
+  width: 100%;
+  height: 20%;
+  z-index: 0;
+  top:-1%;
+  left:0%;
   position: absolute;
-  margin-top: -10%;
-  margin-left: -20%;
+  
+}
+.header h1{
+  position: absolute;
+  font-size: 4vw;
+  color: #232b2b;
+  left: 50%;
+  top:40%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.header h2{
+  position: absolute;
+  font-size: 4vw;
+  left: 40%;
+  top:47%;
+  color: #FAFFCD;
+  
+  z-index: 5;
+}
+.header p{
+  position: absolute;
+  font-size: x-large;
+}
+.header-curve{
+  rotate: 180deg;
+  
+}
+
+.body-container{
+  background-color: blanchedalmond;
+  position: absolute;
+  
+  top:50%;
+  left:0%;
+  width: 100%;
+  height: 20vw;
+}
+
+.save-button{
+  height: 2vw;
+  right: 15%;
+  bottom: 37%;
+  font-size: larger;
+  padding-bottom: 1px;
+  color: black;
+  background: none;
+  border: none;
+  position: absolute;
+
+}
+
+.save-button::after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  left: 0;
+  bottom: 0.3vw;
+  opacity: 0;
+  transform: translateY(3px);
+  background: black;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.save-button:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.header-profile{
+  position: absolute;
+  z-index: 30;
+  right: 2%;
+  top:3.5%;
+  height: 1.5vw;
+}
+
+.body-container-output {
+  
+  position: absolute;
+  z-index: 60;
+  top: 90%; 
+  left: 50%;
+  transform: translate(-50%, 0%);
+  background-color: blanchedalmond;
+  width: 100%;
+  height: 30vw;
+}
+
+.message-output{
+  position: absolute;
+  color: #232b2b;
+  font-size: 1.5vw;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  z-index: 109000;
+}
+
+.span-container{
+  z-index: 10000;
+  position: absolute;
+  left: 50%;
+  background-color: blanchedalmond;
+  transform: translate(-50%, -50%);
+  height: 10%;
+  word-break:normal;
+  
+  width: 80%;
+ 
+}
+.span-container .message-output{
+  margin-top: 30%;
+  color:#232b2b;
+}
+
+.body-footer{
+  position: absolute;
+  z-index: 0;
+  top:60%;
+  background-color: #CDE1FF;
+  height: 20vw;
+  width: 100%;
+}
+
+.body-footer-current{
+  position: relative;
+  top: 20%;
+  
+  font-size: 1vw;
+  color:#232b2b;
+ 
+  width: 10vw;
+  background-color: white;
+  height: 10vw;
+  border-radius: 5px;
+  z-index: 1000;
+  box-shadow: 0 0 5px 1px #232b2b;
+  left: 30%;
+}
+.body-footer-longest{
+  
+  
+  
+  font-size: 1vw;
+  color:#232b2b;
+ float: right;
+  width: 10vw;
+  background-color: white;
+  height: 10vw;
+  border-radius: 5px;
+  z-index: 1000;
+  box-shadow: 0 0 5px 1px #232b2b;
+  
 }
