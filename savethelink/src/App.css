@@ -45,6 +45,8 @@ body{
   color: #888;
 }
 .text-input{
+  position: relative;
+  z-index: 1000;
   margin-top: -7%;
   margin-left: 30%;
   background: #FFD79A;
@@ -69,7 +71,7 @@ body{
   
 }
 .input-div{
-  
+  z-index: 1000000;
   margin-left: 5%;
   margin-top: 0%;
 }
@@ -129,6 +131,7 @@ body{
 }
 
 .save-button{
+z-index: 100000000000000;
   height: 2vw;
   right: 15%;
   bottom: 37%;
@@ -210,38 +213,57 @@ body{
   position: absolute;
   z-index: 0;
   top:60%;
-  background-color: #CDE1FF;
-  height: 20vw;
+  background-color: #232b2b;
+  height: 15vw;
   width: 100%;
 }
 
 .body-footer-current{
-  position: relative;
-  top: 20%;
+  position: absolute;
+  top: -85%;
   
   font-size: 1vw;
   color:#232b2b;
  
   width: 10vw;
-  background-color: white;
+  background-color: #FFD79A;
   height: 10vw;
   border-radius: 5px;
-  z-index: 1000;
+  z-index: 10000900;
   box-shadow: 0 0 5px 1px #232b2b;
   left: 30%;
 }
 .body-footer-longest{
   
   
+  position: absolute;
+  top: -85%;
   
   font-size: 1vw;
   color:#232b2b;
- float: right;
+ 
   width: 10vw;
-  background-color: white;
+  background-color: #FFD79A;
   height: 10vw;
   border-radius: 5px;
-  z-index: 1000;
-  box-shadow: 0 0 5px 1px #232b2b;
+  z-index: 10000900;
   
+  box-shadow: 0 0 5px 1px #232b2b;
+  left: 60%;
+  transition: all 0.3s ease;
+}
+.body-footer-longest:hover{
+  transform: translateY(-20%);
+  
+  
+}
+.footer-curve{
+  position: relative;
+  margin-top:-4%;
+}
+.footer-curve-2{
+  position: relative;
+  z-index: 10000;
+  margin-top:-20%;
+  pointer-events: none;
 }
