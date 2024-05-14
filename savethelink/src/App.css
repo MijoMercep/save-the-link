@@ -232,6 +232,12 @@ z-index: 100000000000000;
   z-index: 10000900;
   box-shadow: 0 0 5px 1px #232b2b;
   left: 30%;
+  transition: all 0.3s ease;
+}
+.body-footer-current:hover{
+  transform: translateY(-20%);
+  
+  
 }
 .body-footer-longest{
   
@@ -266,4 +272,27 @@ z-index: 100000000000000;
   z-index: 10000;
   margin-top:-20%;
   pointer-events: none;
+}
+.built-by-text{
+  position: relative;
+  margin-left: -2%;
+  z-index: 1000000000;
+  color: #56585d;
+  margin-top: 10%;
+  
+}
+.github-logo{
+  position: absolute;
+  margin-top: -2.7%;
+  margin-left: 1.5%;
+  height: 2.5vw;
+  transition: all 0.3s ease;
+}
+.name-text{
+  color: white;
+}
+
+.github-logo:hover{
+  height: 2.6vw;
+ 
 }

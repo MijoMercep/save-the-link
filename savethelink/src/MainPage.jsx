@@ -185,6 +185,9 @@ useEffect(() => {
           <div className="body-footer-longest"><p>Longest Streak:</p>
           <p> {summary(dates).longestStreak}</p></div>
           <button onClick={logout}>Logout</button>
+          <p className="built-by-text">Built by <a className="name-text">Mijo</a> |</p>
+          <a href="https://github.com/MijoMercep">
+          <img className="github-logo" src="/images/github.svg"></img></a>
         </div>
         
         </div></div></>
