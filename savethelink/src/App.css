@@ -275,7 +275,7 @@ z-index: 100000000000000;
 }
 .built-by-text{
   position: relative;
-  margin-left: -2%;
+  margin-left: -1.5%;
   z-index: 1000000000;
   color: #56585d;
   margin-top: 10%;
@@ -284,7 +284,7 @@ z-index: 100000000000000;
 .github-logo{
   position: absolute;
   margin-top: -2.7%;
-  margin-left: 1.5%;
+  margin-left: 2%;
   height: 2.5vw;
   transition: all 0.3s ease;
 }

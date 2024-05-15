@@ -56,7 +56,9 @@ function App() {
     navigate("/");
   }
   
-  
+  const signup = async()=>{
+    navigate("/signup")
+  }
 
   
 
@@ -69,7 +71,7 @@ function App() {
   register={register}></SignUp>}/>
   <Route path="/" element={<LoginPage setLoginEmail={setLoginEmail}
         setLoginPassword={setLoginPassword}
-        
+        signup = {signup}
         login={login}></LoginPage>}></Route>
 <Route path="/main" element={<MainPage logout={logout} user={user}></MainPage>}></Route>
       
