@@ -170,6 +170,7 @@ z-index: 100000000000000;
   height: 1.5vw;
 }
 
+
 .body-container-output {
   
   position: absolute;
@@ -295,4 +296,62 @@ z-index: 100000000000000;
 .github-logo:hover{
   height: 2.6vw;
  
+}
+
+.profile-show{
+  position: absolute;
+  top: 8%;
+  display: none;
+  font-size: 1vw;
+  color:white;
+  
+  width: 15vw;
+  background-color: #232b2b;
+  height: 10vw;
+  border-radius: 5px;
+  z-index: 100009003411112344444444444;
+  word-break: normal;
+  box-shadow: 0 0 5px 1px #232b2b;
+  left: 83%;
+}
+.profile-show.visible {
+  display: block;
+}
+.logout-btn{
+  z-index: 100000000000000;
+  font-size: 0.7vw;
+  
+  margin-top: 10%;
+  padding-bottom: 1px;
+  color: black;
+  background: none;
+  border: none;
+  
+}
+
+
+
+.logout-btn {
+	background-color: white;
+    padding: 12px 24px;
+    color: black;
+    border-radius: 6px;
+    border-bottom: 4px solid hsl(241, 3%, 73%);
+    border-top: 0px;
+
+    transition: all 0.1s ease-in-out;
+}
+
+.logout-btn:hover {
+	border-bottom-width: 0;
+    border-top-width: 4px;
+}
+.description-text{
+  position: absolute;
+  margin-top: 2%;
+  width: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  word-break: normal;
+  color: white;
 }
