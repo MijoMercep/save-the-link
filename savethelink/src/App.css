@@ -135,6 +135,7 @@ z-index: 100000000000000;
   height: 2vw;
   right: 15%;
   bottom: 37%;
+  cursor: pointer;
   font-size: larger;
   padding-bottom: 1px;
   color: black;
@@ -164,6 +165,7 @@ z-index: 100000000000000;
 
 .header-profile{
   position: absolute;
+  cursor: pointer;
   z-index: 30;
   right: 2%;
   top:3.5%;
@@ -283,10 +285,9 @@ z-index: 100000000000000;
   
 }
 .github-logo{
-  position: absolute;
-  margin-top: -2.7%;
-  margin-left: 2%;
+  vertical-align:middle;
   height: 2.5vw;
+  
   transition: all 0.3s ease;
 }
 .name-text{
@@ -320,7 +321,7 @@ z-index: 100000000000000;
 .logout-btn{
   z-index: 100000000000000;
   font-size: 0.7vw;
-  
+  cursor: pointer;
   margin-top: 10%;
   padding-bottom: 1px;
   color: black;
@@ -365,11 +366,11 @@ z-index: 100000000000000;
  background-color: transparent;
 }
 .div-input{
-  
+ 
   width:420px;
 }
 .input-type{
-  
+  text-indent: 5%;
   background: transparent;
   height: 40px;
   width: 75%;
@@ -378,10 +379,7 @@ z-index: 100000000000000;
   border: 1px solid #232b2b;
   border-radius: 40px;
 }
-.input-type::placeholder{
- 
-  padding-left: 20px;
-}
+
 .div-login-btn{
   width:420px;
   height: 100px;
@@ -392,7 +390,7 @@ z-index: 100000000000000;
   background: white;
   height: 40px;
   width: 75%;
-  
+  cursor: pointer;
   font-size: 16px;
   margin-top: 10%;
   border: none;
@@ -401,6 +399,7 @@ z-index: 100000000000000;
 
 .login-header{
  padding-top: 0px;
+ 
  color: #232b2b;
 }
 .register-text{
@@ -409,6 +408,7 @@ z-index: 100000000000000;
 .register-text a{
   color: #232b2b;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .header-curve-login{

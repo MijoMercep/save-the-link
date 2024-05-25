@@ -14,7 +14,7 @@ import {BrowserRouter as Router, Route, Routes, useNavigate} from "react-router-
 import { collection, getDocs } from "firebase/firestore"; 
 
 function App() {
-  
+  const [userName, setUserName] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
@@ -29,12 +29,14 @@ function App() {
 }, [])
   const register = async () => {
     try{
-      const user =  await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
+      const user =  await createUserWithEmailAndPassword(auth, registerEmail, registerPassword, userName);
       console.log(user);
       navigate("main");
     }
     catch (error)
-    {console.log(error.message)}
+    {console.log(error.message);
+      console.log(userName)
+    }
     
   }
   const login = async () => {
@@ -42,6 +44,7 @@ function App() {
       const user =  await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
       console.log(user);
       navigate("main");
+      console.log(userName);
      console.log(registerEmail);
      
      }
@@ -55,7 +58,9 @@ function App() {
     await signOut(auth);
     navigate("/");
   }
-  
+  const goToLogin = async () => {
+    navigate("/")
+  }
   const signup = async()=>{
     navigate("/signup")
   }
@@ -67,13 +72,15 @@ function App() {
     <Routes>
       
     <Route path='/signup' element={<SignUp setRegisterEmail={setRegisterEmail}
+    setUserName = {setUserName}
     setRegisterPassword={setRegisterPassword}
+    goToLogin = {goToLogin}
   register={register}></SignUp>}/>
   <Route path="/" element={<LoginPage setLoginEmail={setLoginEmail}
         setLoginPassword={setLoginPassword}
         signup = {signup}
         login={login}></LoginPage>}></Route>
-<Route path="/main" element={<MainPage logout={logout} user={user}></MainPage>}></Route>
+<Route path="/main" element={<MainPage logout={logout} user={user} userName = {userName}></MainPage>}></Route>
       
      </Routes>
     </>

@@ -15,7 +15,7 @@ const today = new Date();
 const todayDate = today.toDateString();
 
 
-function MainPage({logout, user}){
+function MainPage({logout, user, userName}){
   const initialDates = [];
   const [isProfileVisible, setProfileVisible] = useState(false);
   const [selected, setSelected] = useState(new Date());
@@ -30,7 +30,7 @@ function MainPage({logout, user}){
   const [valueInput, setValueInput] = useState("");
   const [dateOutput, setDateOutput] = useState(new Map());
   const [initialDate, setInitialDate] = useState();
- 
+  let userNameOutput;
   const mapArray = [];
 
   
@@ -39,17 +39,15 @@ const getInitialDate = async()=>{
   const docSnapshot = await getDoc(userDocRef);
   
   let data = docSnapshot.data();
-  console.log(data.mapField)
+  
   const mapFieldEntries = Object.entries(data.mapField);
   const mapFieldMap = new Map(mapFieldEntries);
   setDateOutput(mapFieldMap);
-  console.log(user);
-  console.log(data)
-  console.log(data.initialDate);
-  setDates(data.initialDate)
   
-  console.log()
-  console.log(data.mapField);
+  setDates(data.initialDate)
+  userNameOutput = data.userName;
+ console.log(userNameOutput)
+  
 }catch(error){console.log(user);}
   
 }
@@ -58,7 +56,7 @@ const getInitialDate = async()=>{
 useEffect(()=>{
   
   getInitialDate();
- console.log(dates);
+ 
 }, [user]);
 
 
@@ -66,18 +64,19 @@ useEffect(()=>{
 const HandleAdd = async () => {
   const userId = user.uid;
   let userDocRef = doc(collection(db, "users"), userId);
-  console.log(dateOutput);
-  const dateOutputObject = Object.fromEntries(dateOutput);
-  console.log(dateOutputObject)
-  console.log(Object.entries(dateOutputObject));
-  let firestoreMap = new Map(Object.entries(dateOutputObject));
   
-  console.log(firestoreMap);
+  const dateOutputObject = Object.fromEntries(dateOutput);
+  
+  
+  
+  
+  
   await setDoc(userDocRef, { initialDate: dates,
-    mapField: dateOutputObject
+    mapField: dateOutputObject,
+    userName: userName
+    
    });
-  console.log("Document written with ID: ", userDocRef.id);
-  console.log(initialDate);
+   
 } 
 
 
@@ -106,6 +105,7 @@ useEffect(() => {
         
         const formattedDate = selected.toDateString();
         const newMap = new Map(dateOutput);
+        console.log(newMap);
         newMap.set(selected?.toDateString(), valueInput);
         setDateOutput(newMap);
         mapArray.push(newMap);
@@ -142,7 +142,7 @@ useEffect(() => {
         </div>
         <img className="header-profile" src="/images/profile-svg.svg" onMouseEnter={() => setProfileVisible(true)}></img>
         <div className={`profile-show ${isProfileVisible ? 'visible' : ''}`}
-        onMouseLeave={() => setProfileVisible(false)}><p>User: {user.email}</p>
+        onMouseLeave={() => setProfileVisible(false)}><p>User: {user.userName}</p>
         <button onClick={logout} className="logout-btn">Logout</button></div>
         <div className="body-container">
         
@@ -190,9 +190,12 @@ useEffect(() => {
           <p> {summary(dates).longestStreak}</p></div>
           <button onClick={logout}>Logout</button>
           <p className="description-text">Welcome to Don't Break the Chain, the ultimate tool to help you stay motivated and productive every day! Our web app is designed to encourage consistency and foster a sense of accomplishment by allowing you to log your daily achievements.</p>
-          <p className="built-by-text">Built by <a className="name-text">Mijo</a> |</p>
-          <a href="https://github.com/MijoMercep">
-          <img className="github-logo" src="/images/github.svg"></img></a>
+          
+          <p className="built-by-text">Built by <a className="name-text">Mijo</a> | <a href="https://github.com/MijoMercep">
+          <img className="github-logo" src="/images/github.svg"></img></a></p>
+          
+          
+          
 
         </div>
         

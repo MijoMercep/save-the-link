@@ -23,7 +23,7 @@ function LoginPage({ setLoginEmail, setLoginPassword, login, signup}){
        
         
           <div className="div-login-btn"><button onClick={login} className="login-btn">Login</button></div>
-          <div className="register-text"><p>Don't have an account? <a onClick={signup}>Register</a></p></div>
+          <div className="register-text"><p>Don't have an account? <a onClick={signup} >Register</a></p></div>
           </div>
       </div></>
   );
