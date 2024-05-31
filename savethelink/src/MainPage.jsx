@@ -91,7 +91,7 @@ useEffect(() => {
     setCss(`
       .my-today { 
         font-weight: bold;
-        font-size: 140%; 
+        font-size: 120%; 
         color: black;
         
         text-decoration: line-through;

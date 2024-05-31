@@ -133,10 +133,11 @@ body{
 .save-button{
 z-index: 100000000000000;
   height: 2vw;
+  
   right: 15%;
   bottom: 37%;
   cursor: pointer;
-  font-size: larger;
+  font-size: 1.5vw;
   padding-bottom: 1px;
   color: black;
   background: none;
@@ -153,14 +154,14 @@ z-index: 100000000000000;
   left: 0;
   bottom: 0.3vw;
   opacity: 0;
-  transform: translateY(3px);
+  transform: translateY(2%);
   background: black;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .save-button:hover::after {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(1%);
 }
 
 .header-profile{
@@ -278,6 +279,7 @@ z-index: 100000000000000;
 }
 .built-by-text{
   position: relative;
+  font-size: 1.5vw;
   margin-left: -1.5%;
   z-index: 1000000000;
   color: #56585d;
@@ -349,6 +351,7 @@ z-index: 100000000000000;
 }
 .description-text{
   position: absolute;
+  font-size: 1vw;
   margin-top: 2%;
   width: 40%;
   left: 50%;
