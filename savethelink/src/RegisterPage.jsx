@@ -1,4 +1,5 @@
 function SignUp({setRegisterEmail, setRegisterPassword, register, goToLogin, setUserName}){
+    
   
     return(
 
